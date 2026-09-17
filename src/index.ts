@@ -1,4 +1,6 @@
 import express, { type Request, type Response } from "express";
+import userRoutes from "./routes/usersRoutes.ts";
+import itemsRoutes from "./routes/itemsRoutes.ts";
 
 // import middlewares
 import morgan from "morgan";
@@ -13,6 +15,9 @@ app.use(express.json());
 app.use(morgan("dev"));
 // app.use(morgan("combined"));
 
+app.use("/api/v685/auth/", userRoutes);
+app.use("/api/v685/basket/", itemsRoutes);
+
 // Endpoints
 app.get("/", (req: Request, res: Response) => {
   res.send("Quiz #2 - API service");
@@ -22,6 +27,19 @@ app.get("/me", (req: Request, res: Response) => {
   res.status(200).json({
     success: true,
     message: "Quiz #2 - API service",
+  });
+});
+
+app.get("/student", (req: Request, res: Response) => {
+  res.status(200).json({
+    success: "true",
+    message: "Student Information",
+    data: {
+      studentId: "680610685",
+      firstName: "Nontanun",
+      lastName: "Hinmalai",
+      section: "001",
+    },
   });
 });
 
