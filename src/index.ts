@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 // app.use(morgan("combined"));
 
-app.use("/api/v685/auth/", userRoutes);
+app.use("/api/v685/", userRoutes);
 app.use("/api/v685/basket/", itemsRoutes);
 
 // Endpoints
